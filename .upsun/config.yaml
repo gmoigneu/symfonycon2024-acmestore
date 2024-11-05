@@ -25,6 +25,7 @@ applications:
                 - pdo_pgsql
                 - sodium
                 - xsl
+                - ffi
                 
 
         variables:
