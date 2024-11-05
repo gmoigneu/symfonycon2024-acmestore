@@ -29,7 +29,7 @@ class Review
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $sort_timestamp = null;
 
-    #[ORM\ManyToOne(inversedBy: 'reviews')]
+    #[ORM\ManyToOne(inversedBy: 'reviews', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Product $product = null;
 

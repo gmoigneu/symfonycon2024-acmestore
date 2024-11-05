@@ -20,7 +20,7 @@ final class Version20241025152850 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE product (id SERIAL NOT NULL, asin VARCHAR(255) NOT NULL, title TEXT NOT NULL, average_rating NUMERIC(2, 1) NOT NULL, rating_number INT NOT NULL, description TEXT DEFAULT NULL, price NUMERIC(10, 2) NOT NULL, image VARCHAR(255) DEFAULT NULL, thumbnail VARCHAR(255) NOT NULL, details JSON NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE product (id SERIAL NOT NULL, asin VARCHAR(255) NOT NULL, title TEXT NOT NULL, average_rating NUMERIC(2, 1) NOT NULL, rating_number INT NOT NULL, description TEXT DEFAULT NULL, price NUMERIC(10, 2) NOT NULL, image VARCHAR(255) DEFAULT NULL, thumbnail VARCHAR(255) DEFAULT NULL, details JSON DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE review (id SERIAL NOT NULL, product_id INT NOT NULL, rating NUMERIC(2, 1) NOT NULL, title TEXT NOT NULL, text TEXT NOT NULL, verified_purchase BOOLEAN NOT NULL, sort_timestamp TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_794381C64584665A ON review (product_id)');
         $this->addSql('CREATE TABLE messenger_messages (id BIGSERIAL NOT NULL, body TEXT NOT NULL, headers TEXT NOT NULL, queue_name VARCHAR(190) NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, available_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, delivered_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
