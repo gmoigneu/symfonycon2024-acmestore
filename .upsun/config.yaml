@@ -42,6 +42,7 @@ applications:
 
         mounts:
             "/var": { source: storage, source_path: var }
+            "/.transformers-cache": { source: storage, source_path: transformers-cache }
             
 
         relationships:
@@ -54,9 +55,13 @@ applications:
                 curl -fs https://get.symfony.com/cloud/configurator | bash
                 
                 NODE_VERSION=18 symfony-build
+                ./vendor/bin/transformers install
 
             deploy: |
                 set -x -e
+
+                ./vendor/bin/transformers download Xenova/vit-base-patch16-224
+                ./vendor/bin/transformers download Xenova/distilbert-base-uncased-finetuned-sst-2-english
 
                 symfony-deploy
 
