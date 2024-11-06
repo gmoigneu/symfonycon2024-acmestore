@@ -43,6 +43,7 @@ applications:
 
         mounts:
             "/var": { source: storage, source_path: var }
+            "/data": { source: storage, source_path: data }
             "/.transformers-cache": { source: storage, source_path: transformers-cache }
             
 

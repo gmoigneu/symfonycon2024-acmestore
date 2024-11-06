@@ -80,7 +80,7 @@ class LoadTestProductData extends Command
             }
                 
                 $count++;
-                if ($count % 100 === 0) {
+                if ($count % 1000 === 0) {
                 $this->entityManager->flush();
                 $this->entityManager->clear();
                 $output->writeln("Processed $count products");
