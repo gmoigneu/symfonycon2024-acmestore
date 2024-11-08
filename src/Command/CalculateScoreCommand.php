@@ -45,12 +45,10 @@ class CalculateScoreCommand extends Command
         $reviews = $product->getReviews();
 
         $output->writeln("Found " . $reviews->count() . " reviews");
-
         $pipe = pipeline('sentiment-analysis');
 
         $positive = 0;
         $negative = 0;
-
         $startTime = microtime(true);
         
         foreach ($reviews as $review) {
