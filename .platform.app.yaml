@@ -5,16 +5,20 @@ type: php:8.3
 runtime:
     extensions:
         - apcu
-        - mbstring
-        - sodium
+        - blackfire
         - ctype
         - iconv
+        - mbstring
+        - pdo_pgsql
+        - sodium
+        - xsl
+        - ffi
         
 
-#variables:
-#    php:
-#        # uncomment on PHP 7.4+
-#        #opcache.preload: config/preload.php
+variables:
+    php:
+        # uncomment on PHP 7.4+
+        opcache.preload: config/preload.php
 
 build:
     flavor: none
@@ -43,17 +47,21 @@ workers:
 
 mounts:
     "/var": { source: local, source_path: var }
-    
+    "/data": { source: local, source_path: data }
+    "/.transformers-cache": { source: local, source_path: transformers-cache }
+
+relationships:
+    database: "database:postgresql"
 
 hooks:
     build: |
         set -x -e
-
         curl -fs https://get.symfony.com/cloud/configurator | bash
-        
         NODE_VERSION=18 symfony-build
+        ./vendor/bin/transformers install
 
     deploy: |
         set -x -e
-
+        ./vendor/bin/transformers download Xenova/vit-base-patch16-224
+        ./vendor/bin/transformers download Xenova/distilbert-base-uncased-finetuned-sst-2-english
         symfony-deploy
