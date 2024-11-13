@@ -64,6 +64,7 @@ applications:
 
                 ./vendor/bin/transformers download Xenova/vit-base-patch16-224
                 ./vendor/bin/transformers download Xenova/distilbert-base-uncased-finetuned-sst-2-english
+                ./vendor/bin/transformers download Xenova/flan-t5-small
 
                 symfony-deploy
 

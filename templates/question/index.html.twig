@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ask a Question{% endblock %}
+
+{% block body %}
+    <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+        <div class="relative py-3 sm:max-w-4xl sm:mx-auto">
+            <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow w-4xl rounded-3xl sm:p-10">
+                <div class="w-4xl mx-auto">
+                    <div class="divide-y divide-gray-200">
+                        <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                            <h2 class="text-2xl font-bold mb-8 text-center text-gray-800">Text Generation</h2>
+                            <form action="{{ path('question_handle') }}" method="post" enctype="multipart/form-data" class="space-y-6">
+                                <div class="flex flex-col space-y-2">
+                                    <label for="question" class="text-gray-700">Ask any question:</label>
+                                    <textarea 
+                                        id="question" 
+                                        name="question" 
+                                        rows="3" 
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        >Can a taco be considered as a sandwich?</textarea>
+                                </div>
+                                <div class="flex justify-center">
+                                    <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out">
+                                        Ask
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

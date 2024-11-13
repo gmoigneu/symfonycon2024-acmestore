@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Image Result{% endblock %}
+
+{% block body %}
+    <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+        <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+            <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
+                <div class="max-w-md mx-auto">
+                    <div class="text-center">
+                        <h2 class="text-2xl font-bold mb-6 text-gray-800">{{ isHotdog ? 'Hotdog! 🌭' : 'Not Hotdog 😢' }}</h2>
+                        <p class="text-gray-600 mb-8">{{ imageName }}</p>
+                        <div class="mb-6">
+                            <img src="{{ imagePath }}" alt="{{ imageName }}" class="rounded-lg shadow-lg mx-auto max-w-full h-auto">
+                        </div>
+                        <div class="mb-6">
+                            <p class="text-gray-600 mb-8">Labels: {{ labels|join(', ') }}</p>
+                        </div>
+                        <a href="{{ path('hotdog_index') }}" class="inline-block bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out">
+                            Upload Another Image
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
