@@ -28,6 +28,7 @@
 data/**
 .transformers-cache/**
 public/.transformers-cache/**
+public/uploads/**
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
